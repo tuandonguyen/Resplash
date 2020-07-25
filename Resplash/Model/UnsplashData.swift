@@ -33,6 +33,10 @@ struct ImageUrls: Codable, Hashable {
 //"user"
 //Request User info will return one User.
 //Request User's Following/Follower list will return an array of User objects.
+enum UserInfoType {
+    case PublicProfile, Followers, Following
+}
+
 struct User: Codable, Hashable {
     let id: String
     let username: String

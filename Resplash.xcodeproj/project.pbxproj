@@ -20,6 +20,13 @@
 		846DCAE124CA9E170079DE10 /* UnsplashData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCAE024CA9E170079DE10 /* UnsplashData.swift */; };
 		846DCAE424CA9F260079DE10 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCAE324CA9F260079DE10 /* Network.swift */; };
 		846DCAE624CAA7370079DE10 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCAE524CAA7370079DE10 /* Error.swift */; };
+		846DCAEE24CB5F950079DE10 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCAED24CB5F950079DE10 /* UserProfileVC.swift */; };
+		846DCAF024CB60E90079DE10 /* FollowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCAEF24CB60E90079DE10 /* FollowVC.swift */; };
+		846DCAF324CB66530079DE10 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCAF224CB66530079DE10 /* TextField.swift */; };
+		846DCAF624CB6EA30079DE10 /* RandomBackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCAF524CB6EA30079DE10 /* RandomBackgroundImageView.swift */; };
+		846DCAF924CB804C0079DE10 /* UserNameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCAF824CB804C0079DE10 /* UserNameLabel.swift */; };
+		846DCAFC24CB828B0079DE10 /* UserProfilePic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCAFB24CB828B0079DE10 /* UserProfilePic.swift */; };
+		846DCAFF24CB847E0079DE10 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCAFE24CB847E0079DE10 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +45,13 @@
 		846DCAE024CA9E170079DE10 /* UnsplashData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashData.swift; sourceTree = "<group>"; };
 		846DCAE324CA9F260079DE10 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		846DCAE524CAA7370079DE10 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		846DCAED24CB5F950079DE10 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
+		846DCAEF24CB60E90079DE10 /* FollowVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowVC.swift; sourceTree = "<group>"; };
+		846DCAF224CB66530079DE10 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		846DCAF524CB6EA30079DE10 /* RandomBackgroundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomBackgroundImageView.swift; sourceTree = "<group>"; };
+		846DCAF824CB804C0079DE10 /* UserNameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameLabel.swift; sourceTree = "<group>"; };
+		846DCAFB24CB828B0079DE10 /* UserProfilePic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePic.swift; sourceTree = "<group>"; };
+		846DCAFE24CB847E0079DE10 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,19 +84,14 @@
 		846DCABC24CA185E0079DE10 /* Resplash */ = {
 			isa = PBXGroup;
 			children = (
-				846DCAE224CA9E7C0079DE10 /* Managers */,
-				846DCADD24CA82CD0079DE10 /* Model */,
 				846DCADA24CA3A6D0079DE10 /* Utilities */,
-				846DCAD724CA34840079DE10 /* Buttons */,
-				846DCABD24CA185E0079DE10 /* AppDelegate.swift */,
-				846DCABF24CA185E0079DE10 /* SceneDelegate.swift */,
-				846DCAC124CA185E0079DE10 /* ViewController.swift */,
-				846DCAC624CA18600079DE10 /* Assets.xcassets */,
-				846DCAC824CA18600079DE10 /* LaunchScreen.storyboard */,
+				846DCAE924CB57680079DE10 /* Support */,
+				846DCAE224CA9E7C0079DE10 /* Managers */,
+				846DCAF424CB66670079DE10 /* Custom UI Elements */,
+				846DCAE824CB574F0079DE10 /* Custom Views */,
+				846DCAE724CB573A0079DE10 /* Main Views */,
+				846DCADD24CA82CD0079DE10 /* Model */,
 				846DCACB24CA18600079DE10 /* Info.plist */,
-				846DCAD124CA32A20079DE10 /* TabBarController.swift */,
-				846DCAD324CA33630079DE10 /* SearchVC.swift */,
-				846DCAD524CA337D0079DE10 /* UserListVC.swift */,
 			);
 			path = Resplash;
 			sourceTree = "<group>";
@@ -100,6 +109,7 @@
 			children = (
 				846DCADB24CA3A8C0079DE10 /* NetworkKeys.swift */,
 				846DCAE524CAA7370079DE10 /* Error.swift */,
+				846DCAFE24CB847E0079DE10 /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -118,6 +128,73 @@
 				846DCAE324CA9F260079DE10 /* Network.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		846DCAE724CB573A0079DE10 /* Main Views */ = {
+			isa = PBXGroup;
+			children = (
+				846DCAD324CA33630079DE10 /* SearchVC.swift */,
+				846DCAD524CA337D0079DE10 /* UserListVC.swift */,
+				846DCAED24CB5F950079DE10 /* UserProfileVC.swift */,
+				846DCAEF24CB60E90079DE10 /* FollowVC.swift */,
+			);
+			path = "Main Views";
+			sourceTree = "<group>";
+		};
+		846DCAE824CB574F0079DE10 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				846DCAD124CA32A20079DE10 /* TabBarController.swift */,
+				846DCAF524CB6EA30079DE10 /* RandomBackgroundImageView.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		846DCAE924CB57680079DE10 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				846DCABD24CA185E0079DE10 /* AppDelegate.swift */,
+				846DCABF24CA185E0079DE10 /* SceneDelegate.swift */,
+				846DCAC124CA185E0079DE10 /* ViewController.swift */,
+				846DCAC624CA18600079DE10 /* Assets.xcassets */,
+				846DCAC824CA18600079DE10 /* LaunchScreen.storyboard */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		846DCAF124CB66110079DE10 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				846DCAF224CB66530079DE10 /* TextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		846DCAF424CB66670079DE10 /* Custom UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+				846DCAFA24CB82070079DE10 /* UserProfileImage */,
+				846DCAF724CB801B0079DE10 /* Labels */,
+				846DCAF124CB66110079DE10 /* TextFields */,
+				846DCAD724CA34840079DE10 /* Buttons */,
+			);
+			path = "Custom UI Elements";
+			sourceTree = "<group>";
+		};
+		846DCAF724CB801B0079DE10 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				846DCAF824CB804C0079DE10 /* UserNameLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		846DCAFA24CB82070079DE10 /* UserProfileImage */ = {
+			isa = PBXGroup;
+			children = (
+				846DCAFB24CB828B0079DE10 /* UserProfilePic.swift */,
+			);
+			path = UserProfileImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,14 +270,21 @@
 				846DCAE424CA9F260079DE10 /* Network.swift in Sources */,
 				846DCAD924CA349D0079DE10 /* Buttons.swift in Sources */,
 				846DCAC224CA185E0079DE10 /* ViewController.swift in Sources */,
+				846DCAF324CB66530079DE10 /* TextField.swift in Sources */,
 				846DCAE624CAA7370079DE10 /* Error.swift in Sources */,
 				846DCADC24CA3A8C0079DE10 /* NetworkKeys.swift in Sources */,
 				846DCAD424CA33630079DE10 /* SearchVC.swift in Sources */,
 				846DCAD224CA32A20079DE10 /* TabBarController.swift in Sources */,
 				846DCABE24CA185E0079DE10 /* AppDelegate.swift in Sources */,
 				846DCAC024CA185E0079DE10 /* SceneDelegate.swift in Sources */,
+				846DCAEE24CB5F950079DE10 /* UserProfileVC.swift in Sources */,
 				846DCAD624CA337D0079DE10 /* UserListVC.swift in Sources */,
 				846DCAE124CA9E170079DE10 /* UnsplashData.swift in Sources */,
+				846DCAFC24CB828B0079DE10 /* UserProfilePic.swift in Sources */,
+				846DCAF624CB6EA30079DE10 /* RandomBackgroundImageView.swift in Sources */,
+				846DCAF924CB804C0079DE10 /* UserNameLabel.swift in Sources */,
+				846DCAF024CB60E90079DE10 /* FollowVC.swift in Sources */,
+				846DCAFF24CB847E0079DE10 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +352,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -322,7 +406,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -344,7 +428,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = tuandonguyen.resplash;
+				PRODUCT_BUNDLE_IDENTIFIER = tido.resplash;
 				PRODUCT_NAME = Resplash;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -363,7 +447,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = tuandonguyen.resplash;
+				PRODUCT_BUNDLE_IDENTIFIER = tido.resplash;
 				PRODUCT_NAME = Resplash;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

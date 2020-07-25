@@ -12,7 +12,6 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        super.viewDidLoad()
         UITabBar.appearance().tintColor = .systemBlue
         viewControllers = [SearchNC(), UserNC()]
     }
@@ -30,7 +29,7 @@ class TabBarController: UITabBarController {
         let userVC = UserListVC()
         userVC.title = "User List"
         //Set the Favorites list VC as tab bar item 1.
-        userVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        userVC.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 1)
         //set the NC root as favoriteslistVC.
         return UINavigationController(rootViewController: userVC)
     }
