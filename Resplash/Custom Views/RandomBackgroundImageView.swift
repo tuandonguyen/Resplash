@@ -23,7 +23,8 @@ class RandomBackgroundImageView: UIImageView {
         NetworkManager.shared.getRandomImageInfo { (result) in
             switch result {
             case .success(let randomPhotoInfo):
-                NetworkManager.shared.downloadImage(from: randomPhotoInfo.urls.full) { [weak self] image in
+                print(randomPhotoInfo.urls.full)
+                NetworkManager.shared.downloadImage(from: randomPhotoInfo.urls.regular) { [weak self] image in
                     guard let self = self else { return }
                     DispatchQueue.main.async { self.image = image }
                 }

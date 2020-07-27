@@ -48,8 +48,6 @@ class SearchVC: UIViewController {
         view.addSubview(backgroundImage)
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             backgroundImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             backgroundImage.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])

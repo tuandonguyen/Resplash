@@ -135,8 +135,6 @@
 			children = (
 				846DCAD324CA33630079DE10 /* SearchVC.swift */,
 				846DCAD524CA337D0079DE10 /* UserListVC.swift */,
-				846DCAED24CB5F950079DE10 /* UserProfileVC.swift */,
-				846DCAEF24CB60E90079DE10 /* FollowVC.swift */,
 			);
 			path = "Main Views";
 			sourceTree = "<group>";
@@ -146,6 +144,8 @@
 			children = (
 				846DCAD124CA32A20079DE10 /* TabBarController.swift */,
 				846DCAF524CB6EA30079DE10 /* RandomBackgroundImageView.swift */,
+				846DCAED24CB5F950079DE10 /* UserProfileVC.swift */,
+				846DCAEF24CB60E90079DE10 /* FollowVC.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";

@@ -20,11 +20,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController = TabBarController()
             window?.makeKeyAndVisible()
             configureNavigationBar()
+            getRandomImage()
         }
 
         func configureNavigationBar() {
             UINavigationBar.appearance().tintColor = .systemBlue
         }
+    
+    func getRandomImage() {
+        
+    }
 
 
     func sceneDidDisconnect(_ scene: UIScene) {
