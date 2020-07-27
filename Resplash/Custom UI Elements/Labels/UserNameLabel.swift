@@ -26,14 +26,6 @@ class UserNameLabel: UILabel {
     }
     
     private func configure() {
-        NetworkManager.shared.getRandomImageInfo { (result) in
-            switch result {
-            case .success(let randomPhotoInfo):
-                DispatchQueue.main.async {self.text = randomPhotoInfo.user.name }
-            case .failure(let error):
-                print(error)
-            }
-        }
         font = UIFont.preferredFont(forTextStyle: .subheadline)
         textColor = .label
         adjustsFontSizeToFitWidth = true

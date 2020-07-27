@@ -28,17 +28,6 @@ class UserProfilePic: UIImageView {
         clipsToBounds = true
         image = placeholderImage
         translatesAutoresizingMaskIntoConstraints = false
-        NetworkManager.shared.getRandomImageInfo { (result) in
-            switch result {
-            case .success(let randomPhotoInfo):
-                NetworkManager.shared.downloadImage(from: randomPhotoInfo.user.profileImage.medium) { [weak self] image in
-                    guard let self = self else { return }
-                    DispatchQueue.main.async { self.image = image }
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
     }
 }
 

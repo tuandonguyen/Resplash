@@ -18,14 +18,14 @@ class SearchVC: UIViewController {
     var username = "scottwebb"
     var page = 1
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        getRandomImageInfo()
         configureBackgroundImage()
         configureBackgoundImageUserProfilePic()
         configureBackgroundImageUserName()
-        configureTextField()
+        configureSearchField()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,7 +33,7 @@ class SearchVC: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    private func configureTextField() {
+    private func configureSearchField() {
         view.addSubview(searchForUserTF)
         searchForUserTF.delegate = self
         NSLayoutConstraint.activate([
@@ -43,6 +43,29 @@ class SearchVC: UIViewController {
             searchForUserTF.heightAnchor.constraint(equalToConstant: 45)
         ])
     }
+    
+    func getRandomImageInfo() {
+        NetworkManager.shared.getRandomImageInfo { (result) in
+            switch result {
+            case .success(let photoInfo):
+                //Set user full name.
+                DispatchQueue.main.async { self.backgroundImageUserName.text = photoInfo.user.name }
+                //Download & set random background image.
+                NetworkManager.shared.downloadImage(from: photoInfo.urls.regular) { [weak self] image in
+                    guard let self = self else { return }
+                    DispatchQueue.main.async { self.backgroundImage.image = image }
+                }
+                //Download and set user profile image.
+                NetworkManager.shared.downloadImage(from: photoInfo.user.profileImage.medium) { [weak self] image in
+                    guard let self = self else { return }
+                    DispatchQueue.main.async { self.backgroundImageUserProfilePic.image = image }
+                }
+            case .failure(let error):
+                print(error.rawValue)
+            }
+        }
+    }
+    
     
     private func configureBackgroundImage() {
         view.addSubview(backgroundImage)
