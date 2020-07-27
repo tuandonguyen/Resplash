@@ -43,6 +43,7 @@ class TextField: UITextField {
         returnKeyType = .go
         //adds in 'x' to clear text field.
         clearButtonMode = .whileEditing
+        placeholder = "Search for a user."
         
     }
 }

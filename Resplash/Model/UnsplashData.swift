@@ -64,3 +64,11 @@ struct ProfileImage: Codable, Hashable {
     let medium: String
     let large: String
 }
+
+//"/search/users"
+//For a given search query, an array of Users will be returned.
+struct SearchQuery: Codable,Hashable {
+    let total: Int
+    let totalPages: Int
+    let results: [User]
+}

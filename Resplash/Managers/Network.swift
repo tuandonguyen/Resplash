@@ -12,9 +12,45 @@ class NetworkManager {
     static let shared = NetworkManager()
     let cache = NSCache<NSString, UIImage>()
     private let baseURL = "https://api.unsplash.com"
+    
+    //Replace with your own network key from unsplash.com
+    let networkKey = NetworkKeys.unsplashAPIKey
+    
     private init(){}
     
-//MARK: - Get Photo Objects
+//MARK: - User Search Query
+    func userSearchQuery(for searchQuery: String, page: Int, completed: @escaping (Result<SearchQuery, NetworkError>) -> Void) {
+        let endpoint = baseURL + "/search/users?page=\(page)&query=\(searchQuery);client_id=\(networkKey)"
+        guard let url = URL(string: endpoint) else {
+            completed(.failure(.test))
+            return
+        }
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let _ = error {
+                completed(.failure(.test))
+            }
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completed(.failure(.test))
+                return
+            }
+            guard let data = data else {
+                completed(.failure(.test))
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let queryResults = try decoder.decode(SearchQuery.self, from: data)
+                //image URLs are stored in randomPhoto. Use these to update UIImage cells.
+                completed(.success(queryResults))
+            } catch {
+                completed(.failure(.test))
+            }
+        }
+        task.resume()
+    }
+    
+    //MARK: - Get Photo Objects
     
     func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void) {
         let cacheKey = NSString(string: urlString)
@@ -50,7 +86,7 @@ class NetworkManager {
     }
     
     func getRandomImageInfo(completed: @escaping (Result<PhotoInfo, NetworkError>) -> Void) {
-        let endpoint = baseURL + "/photos/random?client_id=\(NetworkKeys.unsplashAPIKey);orientation=portrait;query=minimal;featured"
+        let endpoint = baseURL + "/photos/random?client_id=\(networkKey);orientation=portrait;query=minimal;featured"
         guard let url = URL(string: endpoint) else {
             completed(.failure(.test))
             return
@@ -81,7 +117,7 @@ class NetworkManager {
     }
     
     func getUserPhotos(for username: String, page: Int, completed: @escaping (Result<[PhotoInfo], NetworkError>) -> Void) {
-        let endpoint = baseURL + "/users/\(username)/photos?client_id=\(NetworkKeys.unsplashAPIKey);page=\(page);per_page=30"
+        let endpoint = baseURL + "/users/\(username)/photos?client_id=\(networkKey);page=\(page);per_page=30"
         guard let url = URL(string: endpoint) else {
             completed(.failure(.test))
             return
@@ -111,7 +147,7 @@ class NetworkManager {
     }
     
     func getLikedPhotos(for username: String, page: Int, completed: @escaping (Result<[PhotoInfo], NetworkError>) -> Void) {
-        let endpoint = baseURL + "/users/\(username)/likes?client_id=\(NetworkKeys.unsplashAPIKey);page=\(page);per_page=30"
+        let endpoint = baseURL + "/users/\(username)/likes?client_id=\(networkKey);page=\(page);per_page=30"
         guard let url = URL(string: endpoint) else {
             completed(.failure(.test))
             return
@@ -144,7 +180,7 @@ class NetworkManager {
     
 //MARK: - Get User Objects
     func getPublicProfile(for username: String, page: Int, completed: @escaping (Result<User, NetworkError>) -> Void) {
-        let endpoint = baseURL + "/users/\(username)" + "?client_id=" + NetworkKeys.unsplashAPIKey
+        let endpoint = baseURL + "/users/\(username)" + "?client_id=" + networkKey
         guard let url = URL(string: endpoint) else {
              completed(.failure(.test))
              return
@@ -175,7 +211,7 @@ class NetworkManager {
     }
     
     func getUserFollowers(for username: String, page: Int, completed: @escaping (Result<[User], NetworkError>) -> Void) {
-        let endpoint = baseURL + "/users/\(username)/followers?client_id=\(NetworkKeys.unsplashAPIKey);page=\(page);per_page=30"
+        let endpoint = baseURL + "/users/\(username)/followers?client_id=\(networkKey);page=\(page);per_page=30"
         guard let url = URL(string: endpoint) else {
              completed(.failure(.test))
              return
@@ -206,7 +242,7 @@ class NetworkManager {
     }
     
     func getUserFollowing(for username: String, page: Int, completed: @escaping (Result<[User], NetworkError>) -> Void) {
-        let endpoint = baseURL + "/users/\(username)/following?client_id=\(NetworkKeys.unsplashAPIKey);page=\(page);per_page=30"
+        let endpoint = baseURL + "/users/\(username)/following?client_id=\(networkKey);page=\(page);per_page=30"
         guard let url = URL(string: endpoint) else {
              completed(.failure(.test))
              return

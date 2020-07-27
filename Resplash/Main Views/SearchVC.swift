@@ -18,6 +18,12 @@ class SearchVC: UIViewController {
     var username = ""
     var page = 1
     
+    //true if text is in search field.
+    //false if search field is empty
+    var isUsernameEntered: Bool {
+        return !searchForUserTF.text!.isEmpty
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -30,12 +36,21 @@ class SearchVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        searchForUserTF.text = ""
         navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    
+    
+    func createDismissKeyboardTapGesture() {
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tap)
     }
     
     private func configureSearchField() {
         view.addSubview(searchForUserTF)
         searchForUserTF.delegate = self
+        
         NSLayoutConstraint.activate([
             searchForUserTF.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             searchForUserTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
@@ -120,8 +135,13 @@ class SearchVC: UIViewController {
 extension SearchVC: UITextFieldDelegate {
     //This delegate method triggers when the 'return' key is pressed.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        //pushFollowerListVC()
-        
+        if isUsernameEntered {
+            searchForUserTF.resignFirstResponder()
+            let searchResultsVC = SearchResultsVC(searchQuery: searchForUserTF.text!)
+            navigationController?.pushViewController(searchResultsVC, animated: true)
+        } else {
+            print("Please enter username")
+        }
         return true
     }
     
