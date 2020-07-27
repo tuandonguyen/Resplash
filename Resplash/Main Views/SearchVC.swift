@@ -15,7 +15,7 @@ class SearchVC: UIViewController {
     var backgroundImageUserProfilePic = UserProfilePic(frame: .zero)
     let backgroundImageUserName = UserNameLabel()
     
-    var username = "scottwebb"
+    var username = ""
     var page = 1
     
     override func viewDidLoad() {
@@ -48,8 +48,11 @@ class SearchVC: UIViewController {
         NetworkManager.shared.getRandomImageInfo { (result) in
             switch result {
             case .success(let photoInfo):
+                self.username = photoInfo.user.username
                 //Set user full name.
-                DispatchQueue.main.async { self.backgroundImageUserName.text = photoInfo.user.name }
+                DispatchQueue.main.async {
+                    self.backgroundImageUserName.text = photoInfo.user.name
+                }
                 //Download & set random background image.
                 NetworkManager.shared.downloadImage(from: photoInfo.urls.regular) { [weak self] image in
                     guard let self = self else { return }
@@ -79,6 +82,11 @@ class SearchVC: UIViewController {
     private func configureBackgoundImageUserProfilePic() {
         view.addSubview(backgroundImageUserProfilePic)
         backgroundImageUserProfilePic.translatesAutoresizingMaskIntoConstraints = false
+        
+        backgroundImageUserProfilePic.isUserInteractionEnabled = true
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(pushUserProfileVC))
+        backgroundImageUserProfilePic.addGestureRecognizer(gestureRecognizer)
+        
         NSLayoutConstraint.activate([
             backgroundImageUserProfilePic.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
             backgroundImageUserProfilePic.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: +50)
@@ -88,11 +96,21 @@ class SearchVC: UIViewController {
     private func configureBackgroundImageUserName() {
         view.addSubview(backgroundImageUserName)
         backgroundImageUserName.translatesAutoresizingMaskIntoConstraints = false
+        
+        backgroundImageUserName.isUserInteractionEnabled = true
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(pushUserProfileVC))
+        backgroundImageUserName.addGestureRecognizer(gestureRecognizer)
+        
         NSLayoutConstraint.activate([
             backgroundImageUserName.centerYAnchor.constraint(equalTo: backgroundImageUserProfilePic.centerYAnchor),
             backgroundImageUserName.leadingAnchor.constraint(equalTo: backgroundImageUserProfilePic.trailingAnchor, constant: 20),
             backgroundImageUserName.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    @objc func pushUserProfileVC() {
+        let userProfileVC = UserProfileVC(username: self.username)
+        navigationController?.pushViewController(userProfileVC, animated: true)
     }
 }
 

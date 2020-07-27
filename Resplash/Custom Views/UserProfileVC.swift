@@ -14,7 +14,7 @@ class UserProfileVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     enum Section { case main }
     
     var userPhotoItems: [PhotoInfo] = []
-    var username = "scottwebb"
+    var username = ""
     var page = 1
     var hasMorePhotos = true
     
@@ -40,6 +40,15 @@ class UserProfileVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         configureViewController()
         getUserPhotoInfo(for: username, page: page)
         configureDataSource()
+    }
+    
+    //Nav bar shows up during swipe transition.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+        //Shows navigation bar. We have moved from the Search VC to  another VC. Having the back button shown allows us to go back to the Search VC.
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     //Set up our Collection View
