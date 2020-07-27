@@ -11,7 +11,7 @@ import UIKit
 class SearchVC: UIViewController {
     
     let searchForUserTF = TextField()
-    let backgroundImage = RandomBackgroundImageView(frame: .zero)
+    let backgroundImage = UIImageView(frame: .zero)
     var backgroundImageUserProfilePic = UserProfilePic(frame: .zero)
     let backgroundImageUserName = UserNameLabel()
     

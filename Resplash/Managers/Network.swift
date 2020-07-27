@@ -20,13 +20,14 @@ class NetworkManager {
         let cacheKey = NSString(string: urlString)
         
         //check if image is in cache.
-        if let image = cache.object(forKey: cacheKey) {
-            //completion handler returns image from cache.
-            completed(image)
-            return
-        }
+//        if let image = cache.object(forKey: cacheKey) {
+//            //completion handler returns image from cache.
+//            completed(image)
+//            return
+//        }
         guard let url = URL(string: urlString) else {
             completed(nil)
+            print("error no image dled")
             return
         }
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
@@ -37,6 +38,7 @@ class NetworkManager {
                 let image = UIImage(data: data) else {
                     //Returns nil if nothing works.
                     completed(nil)
+                    print("error no image dled")
                     return
                 }
             //set the object in our cache.
@@ -100,7 +102,6 @@ class NetworkManager {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let userPhotos = try decoder.decode([PhotoInfo].self, from: data)
-                //image URLs are stored in randomPhoto. Use these to update UIImage cells.
                 completed(.success(userPhotos))
             } catch {
                 completed(.failure(.test))

@@ -13,7 +13,7 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UITabBar.appearance().tintColor = .systemBlue
-        viewControllers = [SearchNC(), UserNC()]
+        viewControllers = [SearchNC(), TestNC()]
     }
     
         func SearchNC() -> UINavigationController {
@@ -25,13 +25,21 @@ class TabBarController: UITabBarController {
         return UINavigationController(rootViewController: searchVC)
     }
     
-    func UserNC() -> UINavigationController {
-        let userVC = UserListVC()
-        userVC.title = "User List"
-        //Set the Favorites list VC as tab bar item 1.
-        userVC.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 1)
-        //set the NC root as favoriteslistVC.
-        return UINavigationController(rootViewController: userVC)
+//    func UserNC() -> UINavigationController {
+//        let userVC = UserListVC()
+//        userVC.title = "User List"
+//        //Set the Favorites list VC as tab bar item 1.
+//        userVC.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 1)
+//        //set the NC root as favoriteslistVC.
+//        return UINavigationController(rootViewController: userVC)
+//    }
+    
+    func TestNC() -> UINavigationController {
+//        let testVC = UserProfileVC(username: "scottwebb")
+        let testVC = UserProfileVC(username: "scottwebb")
+        testVC.title = "UserProfileVC"
+        testVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
+        return UINavigationController(rootViewController: testVC)
     }
 
 }

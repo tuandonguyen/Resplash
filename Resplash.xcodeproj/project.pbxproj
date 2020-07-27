@@ -23,10 +23,10 @@
 		846DCAEE24CB5F950079DE10 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCAED24CB5F950079DE10 /* UserProfileVC.swift */; };
 		846DCAF024CB60E90079DE10 /* FollowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCAEF24CB60E90079DE10 /* FollowVC.swift */; };
 		846DCAF324CB66530079DE10 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCAF224CB66530079DE10 /* TextField.swift */; };
-		846DCAF624CB6EA30079DE10 /* RandomBackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCAF524CB6EA30079DE10 /* RandomBackgroundImageView.swift */; };
 		846DCAF924CB804C0079DE10 /* UserNameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCAF824CB804C0079DE10 /* UserNameLabel.swift */; };
 		846DCAFC24CB828B0079DE10 /* UserProfilePic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCAFB24CB828B0079DE10 /* UserProfilePic.swift */; };
 		846DCAFF24CB847E0079DE10 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCAFE24CB847E0079DE10 /* Constants.swift */; };
+		84D690E424CE700000440D4A /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D690E324CE700000440D4A /* PhotoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,10 +48,10 @@
 		846DCAED24CB5F950079DE10 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		846DCAEF24CB60E90079DE10 /* FollowVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowVC.swift; sourceTree = "<group>"; };
 		846DCAF224CB66530079DE10 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
-		846DCAF524CB6EA30079DE10 /* RandomBackgroundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomBackgroundImageView.swift; sourceTree = "<group>"; };
 		846DCAF824CB804C0079DE10 /* UserNameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameLabel.swift; sourceTree = "<group>"; };
 		846DCAFB24CB828B0079DE10 /* UserProfilePic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePic.swift; sourceTree = "<group>"; };
 		846DCAFE24CB847E0079DE10 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		84D690E324CE700000440D4A /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,8 +142,8 @@
 		846DCAE824CB574F0079DE10 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				84D690E224CE6FD300440D4A /* Cells */,
 				846DCAD124CA32A20079DE10 /* TabBarController.swift */,
-				846DCAF524CB6EA30079DE10 /* RandomBackgroundImageView.swift */,
 				846DCAED24CB5F950079DE10 /* UserProfileVC.swift */,
 				846DCAEF24CB60E90079DE10 /* FollowVC.swift */,
 			);
@@ -195,6 +195,14 @@
 				846DCAFB24CB828B0079DE10 /* UserProfilePic.swift */,
 			);
 			path = UserProfileImage;
+			sourceTree = "<group>";
+		};
+		84D690E224CE6FD300440D4A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				84D690E324CE700000440D4A /* PhotoCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,11 +285,11 @@
 				846DCAD224CA32A20079DE10 /* TabBarController.swift in Sources */,
 				846DCABE24CA185E0079DE10 /* AppDelegate.swift in Sources */,
 				846DCAC024CA185E0079DE10 /* SceneDelegate.swift in Sources */,
+				84D690E424CE700000440D4A /* PhotoCell.swift in Sources */,
 				846DCAEE24CB5F950079DE10 /* UserProfileVC.swift in Sources */,
 				846DCAD624CA337D0079DE10 /* UserListVC.swift in Sources */,
 				846DCAE124CA9E170079DE10 /* UnsplashData.swift in Sources */,
 				846DCAFC24CB828B0079DE10 /* UserProfilePic.swift in Sources */,
-				846DCAF624CB6EA30079DE10 /* RandomBackgroundImageView.swift in Sources */,
 				846DCAF924CB804C0079DE10 /* UserNameLabel.swift in Sources */,
 				846DCAF024CB60E90079DE10 /* FollowVC.swift in Sources */,
 				846DCAFF24CB847E0079DE10 /* Constants.swift in Sources */,
