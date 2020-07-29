@@ -13,7 +13,7 @@ class SearchVC: UIViewController {
     let searchForUserTF = TextField()
     let backgroundImage = UIImageView(frame: .zero)
     var backgroundImageUserProfilePic = UserProfilePic(frame: .zero)
-    let backgroundImageUserName = UserNameLabel()
+    let backgroundImageUserName = TextLabel(textAlignment: .left, fontSize: 15, fontWeight: .regular, textColor: .white)
     
     var username = ""
     var page = 1
@@ -60,7 +60,8 @@ class SearchVC: UIViewController {
     }
     
     func getRandomImageInfo() {
-        NetworkManager.shared.getRandomImageInfo { (result) in
+        NetworkManager.shared.getRandomImageInfo { [weak self] (result) in
+            guard let self = self else { return }
             switch result {
             case .success(let photoInfo):
                 self.username = photoInfo.user.username
@@ -74,10 +75,7 @@ class SearchVC: UIViewController {
                     DispatchQueue.main.async { self.backgroundImage.image = image }
                 }
                 //Download and set user profile image.
-                NetworkManager.shared.downloadImage(from: photoInfo.user.profileImage.medium) { [weak self] image in
-                    guard let self = self else { return }
-                    DispatchQueue.main.async { self.backgroundImageUserProfilePic.image = image }
-                }
+                self.backgroundImageUserProfilePic.downloadImage(fromURL: photoInfo.user.profileImage.medium)
             case .failure(let error):
                 print(error.rawValue)
             }
@@ -103,8 +101,8 @@ class SearchVC: UIViewController {
         backgroundImageUserProfilePic.addGestureRecognizer(gestureRecognizer)
         
         NSLayoutConstraint.activate([
-            backgroundImageUserProfilePic.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
-            backgroundImageUserProfilePic.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: +50)
+            backgroundImageUserProfilePic.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15),
+            backgroundImageUserProfilePic.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15)
         ])
     }
     
@@ -118,7 +116,7 @@ class SearchVC: UIViewController {
         
         NSLayoutConstraint.activate([
             backgroundImageUserName.centerYAnchor.constraint(equalTo: backgroundImageUserProfilePic.centerYAnchor),
-            backgroundImageUserName.leadingAnchor.constraint(equalTo: backgroundImageUserProfilePic.trailingAnchor, constant: 20),
+            backgroundImageUserName.leadingAnchor.constraint(equalTo: backgroundImageUserProfilePic.trailingAnchor, constant: 15),
             backgroundImageUserName.heightAnchor.constraint(equalToConstant: 50)
         ])
     }

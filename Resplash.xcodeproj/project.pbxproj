@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		84340B4D24CF6A57006026CE /* SearchResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84340B4C24CF6A57006026CE /* SearchResultsVC.swift */; };
 		84340B4F24CF6C5B006026CE /* SearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84340B4E24CF6C5B006026CE /* SearchResultsCell.swift */; };
+		8445B0B124D0AAD500CC6324 /* UserProfileHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445B0B024D0AAD500CC6324 /* UserProfileHeaderVC.swift */; };
+		8445B0B424D0AB5B00CC6324 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445B0B324D0AB5B00CC6324 /* UIViewExt.swift */; };
+		8445B0B624D0AF9100CC6324 /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445B0B524D0AF9100CC6324 /* TextLabel.swift */; };
+		8445B0B824D0F08300CC6324 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445B0B724D0F08300CC6324 /* UIViewControllerExt.swift */; };
 		846DCABE24CA185E0079DE10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCABD24CA185E0079DE10 /* AppDelegate.swift */; };
 		846DCAC024CA185E0079DE10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCABF24CA185E0079DE10 /* SceneDelegate.swift */; };
 		846DCAC224CA185E0079DE10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DCAC124CA185E0079DE10 /* ViewController.swift */; };
@@ -34,6 +38,10 @@
 /* Begin PBXFileReference section */
 		84340B4C24CF6A57006026CE /* SearchResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsVC.swift; sourceTree = "<group>"; };
 		84340B4E24CF6C5B006026CE /* SearchResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsCell.swift; sourceTree = "<group>"; };
+		8445B0B024D0AAD500CC6324 /* UserProfileHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeaderVC.swift; sourceTree = "<group>"; };
+		8445B0B324D0AB5B00CC6324 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
+		8445B0B524D0AF9100CC6324 /* TextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
+		8445B0B724D0F08300CC6324 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
 		846DCABA24CA185E0079DE10 /* Resplash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Resplash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		846DCABD24CA185E0079DE10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		846DCABF24CA185E0079DE10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +77,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8445B0AF24D0AA6A00CC6324 /* User Profile Views */ = {
+			isa = PBXGroup;
+			children = (
+				8445B0B024D0AAD500CC6324 /* UserProfileHeaderVC.swift */,
+			);
+			path = "User Profile Views";
+			sourceTree = "<group>";
+		};
+		8445B0B224D0AB3300CC6324 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8445B0B324D0AB5B00CC6324 /* UIViewExt.swift */,
+				8445B0B724D0F08300CC6324 /* UIViewControllerExt.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		846DCAB124CA185E0079DE10 = {
 			isa = PBXGroup;
 			children = (
@@ -88,13 +113,14 @@
 		846DCABC24CA185E0079DE10 /* Resplash */ = {
 			isa = PBXGroup;
 			children = (
-				846DCADA24CA3A6D0079DE10 /* Utilities */,
 				846DCAE924CB57680079DE10 /* Support */,
+				846DCADD24CA82CD0079DE10 /* Model */,
+				8445B0B224D0AB3300CC6324 /* Extensions */,
+				846DCADA24CA3A6D0079DE10 /* Utilities */,
 				846DCAE224CA9E7C0079DE10 /* Managers */,
 				846DCAF424CB66670079DE10 /* Custom UI Elements */,
 				846DCAE824CB574F0079DE10 /* Custom Views */,
 				846DCAE724CB573A0079DE10 /* Main Views */,
-				846DCADD24CA82CD0079DE10 /* Model */,
 				846DCACB24CA18600079DE10 /* Info.plist */,
 			);
 			path = Resplash;
@@ -146,6 +172,7 @@
 		846DCAE824CB574F0079DE10 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				8445B0AF24D0AA6A00CC6324 /* User Profile Views */,
 				84D690E224CE6FD300440D4A /* Cells */,
 				846DCAD124CA32A20079DE10 /* TabBarController.swift */,
 				846DCAED24CB5F950079DE10 /* UserProfileVC.swift */,
@@ -190,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				846DCAF824CB804C0079DE10 /* UserNameLabel.swift */,
+				8445B0B524D0AF9100CC6324 /* TextLabel.swift */,
 			);
 			path = Labels;
 			sourceTree = "<group>";
@@ -283,6 +311,7 @@
 			files = (
 				846DCAE424CA9F260079DE10 /* Network.swift in Sources */,
 				846DCAD924CA349D0079DE10 /* Buttons.swift in Sources */,
+				8445B0B824D0F08300CC6324 /* UIViewControllerExt.swift in Sources */,
 				84340B4D24CF6A57006026CE /* SearchResultsVC.swift in Sources */,
 				846DCAC224CA185E0079DE10 /* ViewController.swift in Sources */,
 				846DCAF324CB66530079DE10 /* TextField.swift in Sources */,
@@ -293,9 +322,12 @@
 				846DCAD224CA32A20079DE10 /* TabBarController.swift in Sources */,
 				846DCABE24CA185E0079DE10 /* AppDelegate.swift in Sources */,
 				846DCAC024CA185E0079DE10 /* SceneDelegate.swift in Sources */,
+				8445B0B124D0AAD500CC6324 /* UserProfileHeaderVC.swift in Sources */,
 				84D690E424CE700000440D4A /* PhotoCell.swift in Sources */,
 				846DCAEE24CB5F950079DE10 /* UserProfileVC.swift in Sources */,
 				846DCAD624CA337D0079DE10 /* UserListVC.swift in Sources */,
+				8445B0B624D0AF9100CC6324 /* TextLabel.swift in Sources */,
+				8445B0B424D0AB5B00CC6324 /* UIViewExt.swift in Sources */,
 				846DCAE124CA9E170079DE10 /* UnsplashData.swift in Sources */,
 				846DCAFC24CB828B0079DE10 /* UserProfilePic.swift in Sources */,
 				846DCAF924CB804C0079DE10 /* UserNameLabel.swift in Sources */,

@@ -12,8 +12,8 @@ class SearchResultsCell: UITableViewCell {
 
     static let reuseID = "SearchResultsCell"
     let userProfilePic = UserProfilePic(frame: .zero)
-    let usernameLabel = UserNameLabel()
-    let userFullNameLabel = UserNameLabel()
+    let usernameLabel = TextLabel(textAlignment: .left, fontSize: 12, fontWeight: .ultraLight, textColor: .label)
+    let userFullNameLabel = TextLabel(textAlignment: .left, fontSize: 20, fontWeight: .bold, textColor: .label)
     
    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -28,12 +28,7 @@ class SearchResultsCell: UITableViewCell {
     func set(userInfo: User) {
         usernameLabel.text = userInfo.username
         userFullNameLabel.text = userInfo.name
-        NetworkManager.shared.downloadImage(from: userInfo.profileImage.medium) { [weak self] (image) in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                self.userProfilePic.image = image
-            }
-        }
+        userProfilePic.downloadImage(fromURL: userInfo.profileImage.medium)
     }
     
     private func configure() {
@@ -46,12 +41,12 @@ class SearchResultsCell: UITableViewCell {
             userProfilePic.heightAnchor.constraint(equalToConstant: 60),
             userProfilePic.widthAnchor.constraint(equalToConstant: 60),
             
-            userFullNameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -5),
+            userFullNameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -10),
             userFullNameLabel.leadingAnchor.constraint(equalTo: userProfilePic.trailingAnchor, constant: 15),
             userFullNameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12),
             userFullNameLabel.heightAnchor.constraint(equalToConstant: 20),
             
-            usernameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 5),
+            usernameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 10),
             usernameLabel.leadingAnchor.constraint(equalTo: userProfilePic.trailingAnchor, constant: 15),
             usernameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12),
             usernameLabel.heightAnchor.constraint(equalToConstant: 20)

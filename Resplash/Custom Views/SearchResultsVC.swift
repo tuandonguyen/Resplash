@@ -46,10 +46,16 @@ class SearchResultsVC: UIViewController {
         }
     }
     
+    //Nav bar shows up during swipe transition.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //Shows navigation bar. We have moved from the Search VC to  another VC. Having the back button shown allows us to go back to the Search VC.
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     func configureViewController() {
         view.backgroundColor = .systemBackground
-        title = "Users Found"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Find Users"
     }
     
     func configureTableView() {
@@ -83,12 +89,9 @@ extension SearchResultsVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultsCell.reuseID) as! SearchResultsCell
         let eachUser = searchResults[indexPath.row]
-        print(eachUser)
-        print(searchResults.count)
         cell.set(userInfo: eachUser)
         return cell
     }
-    
     
 }
 

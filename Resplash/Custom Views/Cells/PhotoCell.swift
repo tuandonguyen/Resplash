@@ -11,6 +11,7 @@ import UIKit
 class PhotoCell: UICollectionViewCell {
     static let reuseID = "PhotoCell"
     let photoImageView = UIImageView(frame: .zero)
+    let cache = NetworkManager.shared.cache
     
     override init(frame: CGRect) {
         super.init(frame: frame)

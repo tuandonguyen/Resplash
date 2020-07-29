@@ -9,18 +9,20 @@
 import UIKit
 
 class NetworkManager {
-    static let shared = NetworkManager()
-    let cache = NSCache<NSString, UIImage>()
-    private let baseURL = "https://api.unsplash.com"
     
-    //Replace with your own network key from unsplash.com
+    //Set networkKey to your own network key from Unsplash.
+    //Free API keys are limited to 50 network calls per hour.
     let networkKey = NetworkKeys.unsplashAPIKey
     
+    private let baseURL = "https://api.unsplash.com"
+    static let shared = NetworkManager()
+    let cache = NSCache<NSString, UIImage>()
     private init(){}
+
+//MARK: - Users Search Query
     
-//MARK: - User Search Query
     func userSearchQuery(for searchQuery: String, page: Int, completed: @escaping (Result<SearchQuery, NetworkError>) -> Void) {
-        let endpoint = baseURL + "/search/users?page=\(page)&query=\(searchQuery);client_id=\(networkKey)"
+        let endpoint = baseURL + "/search/users?page=\(page)&per_page=100&query=\(searchQuery);client_id=\(networkKey)"
         guard let url = URL(string: endpoint) else {
             completed(.failure(.test))
             return
@@ -50,20 +52,17 @@ class NetworkManager {
         task.resume()
     }
     
-    //MARK: - Get Photo Objects
+//MARK: - Download Images and Store into Cache
     
     func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void) {
         let cacheKey = NSString(string: urlString)
-        
-        //check if image is in cache.
-//        if let image = cache.object(forKey: cacheKey) {
-//            //completion handler returns image from cache.
-//            completed(image)
-//            return
-//        }
+        if let image = cache.object(forKey: cacheKey) {
+            completed(image)
+            return
+        }
         guard let url = URL(string: urlString) else {
             completed(nil)
-            print("error no image dled")
+            print("error: bad url")
             return
         }
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
@@ -77,13 +76,13 @@ class NetworkManager {
                     print("error no image dled")
                     return
                 }
-            //set the object in our cache.
             self.cache.setObject(image, forKey: cacheKey)
-            //Return image from network call to the completion handler.
             completed(image)
         }
         task.resume()
     }
+    
+//MARK: - Get Photo Objects
     
     func getRandomImageInfo(completed: @escaping (Result<PhotoInfo, NetworkError>) -> Void) {
         let endpoint = baseURL + "/photos/random?client_id=\(networkKey);orientation=portrait;query=minimal;featured"
@@ -168,7 +167,6 @@ class NetworkManager {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let likes = try decoder.decode([PhotoInfo].self, from: data)
-                //image URLs are stored in randomPhoto. Use these to update UIImage cells.
                 completed(.success(likes))
             } catch {
                 completed(.failure(.test))
@@ -177,8 +175,8 @@ class NetworkManager {
         task.resume()
     }
 
-    
 //MARK: - Get User Objects
+    
     func getPublicProfile(for username: String, page: Int, completed: @escaping (Result<User, NetworkError>) -> Void) {
         let endpoint = baseURL + "/users/\(username)" + "?client_id=" + networkKey
         guard let url = URL(string: endpoint) else {
@@ -201,7 +199,6 @@ class NetworkManager {
                  let decoder = JSONDecoder()
                  decoder.keyDecodingStrategy = .convertFromSnakeCase
                  let userInfo = try decoder.decode(User.self, from: data)
-                 //image URLs are stored in randomPhoto. Use these to update UIImage cells.
                  completed(.success(userInfo))
              } catch {
                  completed(.failure(.test))
@@ -232,8 +229,7 @@ class NetworkManager {
                  let decoder = JSONDecoder()
                  decoder.keyDecodingStrategy = .convertFromSnakeCase
                  let userFollowers = try decoder.decode([User].self, from: data)
-                 //image URLs are stored in randomPhoto. Use these to update UIImage cells.
-                 completed(.success(userFollowers))
+                completed(.success(userFollowers))
              } catch {
                  completed(.failure(.test))
              }
@@ -263,8 +259,7 @@ class NetworkManager {
                  let decoder = JSONDecoder()
                  decoder.keyDecodingStrategy = .convertFromSnakeCase
                  let userFollowers = try decoder.decode([User].self, from: data)
-                 //image URLs are stored in randomPhoto. Use these to update UIImage cells.
-                 completed(.success(userFollowers))
+                completed(.success(userFollowers))
              } catch {
                  completed(.failure(.test))
              }

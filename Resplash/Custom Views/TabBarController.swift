@@ -13,33 +13,23 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UITabBar.appearance().tintColor = .systemBlue
-        viewControllers = [SearchNC(), TestNC()]
+        viewControllers = [SearchNC(), SavedUsersNC()]
     }
     
         func SearchNC() -> UINavigationController {
         let searchVC = SearchVC()
-        searchVC.title = "Discover"
+        searchVC.title = "Search"
         //Set the search VC as tab bar item 0.
         searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         //set the NC root as searchVC.
         return UINavigationController(rootViewController: searchVC)
     }
     
-//    func UserNC() -> UINavigationController {
-//        let userVC = UserListVC()
-//        userVC.title = "User List"
-//        //Set the Favorites list VC as tab bar item 1.
-//        userVC.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 1)
-//        //set the NC root as favoriteslistVC.
-//        return UINavigationController(rootViewController: userVC)
-//    }
-    
-    func TestNC() -> UINavigationController {
-//        let testVC = UserProfileVC(username: "scottwebb")
-        let testVC = UserProfileVC(username: "scottwebb")
-        testVC.title = "UserProfileVC"
-        testVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
-        return UINavigationController(rootViewController: testVC)
+    func SavedUsersNC() -> UINavigationController {
+        let userListVC = UserListVC()
+        userListVC.title = "Saved Users"
+        userListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        return UINavigationController(rootViewController: userListVC)
     }
 
 }

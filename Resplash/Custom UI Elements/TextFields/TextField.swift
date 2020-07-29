@@ -23,11 +23,11 @@ class TextField: UITextField {
         translatesAutoresizingMaskIntoConstraints = false
         //These are all UITextField properties we can change.
         //corner is the edge.
-        layer.cornerRadius = 1
+        layer.cornerRadius = 15
         //border is the border around the edge.
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.systemGray6.cgColor
-        textColor = .label
+//        layer.borderWidth = 1
+//        layer.borderColor = UIColor.systemGray6.cgColor
+        textColor = .white
         tintColor = .label
         textAlignment = .center
         //dynamic type
@@ -36,14 +36,16 @@ class TextField: UITextField {
         adjustsFontSizeToFitWidth = true
         //stops shrinking font at 12pt font.
         minimumFontSize = 9
-        alpha = 0.1
+        alpha = 0.5
         backgroundColor = .systemGray
         autocorrectionType = .no
         //keyboardType allows keyboard type to be changed.
         returnKeyType = .go
         //adds in 'x' to clear text field.
         clearButtonMode = .whileEditing
-        placeholder = "Search for a user."
+        attributedPlaceholder = NSAttributedString(string: "Search for a user.",
+        attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        
         
     }
 }

@@ -43,6 +43,8 @@ struct User: Codable, Hashable {
     let name: String
     //other portfolio
     var portfolioUrl: String?
+    var bio: String?
+    var location: String?
     //unsplash public profile
     let links: UserLinks
     let profileImage: ProfileImage
